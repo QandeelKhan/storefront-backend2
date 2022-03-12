@@ -1,0 +1,9 @@
+{
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+} // {
+//     "python.defaultInterpreterPath": "/media/qandeel/New Volume/programs/python/storefront-project/storefront-backend2/venv-storefront-backend2/bin/python"
+// }

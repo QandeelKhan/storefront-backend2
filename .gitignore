@@ -1,0 +1,4 @@
+*.pyc
+/media/
+general.log
+inf.txt
