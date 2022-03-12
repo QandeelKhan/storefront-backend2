@@ -6,7 +6,10 @@ DEBUG = False
 
 SECRET_KEY = os.environ['STOREFRONTBACKEND2']
 
-ALLOWED_HOSTS = ['haiderbuy-prod.herokuapp.com']
+ALLOWED_HOSTS = [
+    'haiderbuy-prod.herokuapp.com',
+    'https://haiderbuy-prod.herokuapp.com/',
+    ]
 
 DATABASES = {
     'default': dj_database_url.config()
