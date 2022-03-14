@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 from pprint import pprint
 from celery.schedules import crontab
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -30,7 +31,7 @@ INSTALLED_APPS = [
     'store',
     'core',
     'tags',
-    'likes'
+    'likes',
 ]
 
 MIDDLEWARE = [ 
@@ -46,8 +47,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# if DEBUG:
-#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
+if settings.DEBUG:
+    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 INTERNAL_IPS = [
     # ...

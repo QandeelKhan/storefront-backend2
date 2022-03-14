@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/media/qandeel/New Volume/programs/python/storefront-project/storefront-backend2/venv-storefront-backend2/bin/python" "$0" "$@"
+'''exec' "/media/qandeel/New Volume/programs/python/storefront-project/storefront-backend2/venv-storefront-backend2/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
