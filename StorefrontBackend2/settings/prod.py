@@ -4,7 +4,7 @@ from .common import *
 
 DEBUG = False
 
-SECRET_KEY = os.environ['STOREFRONTBACKEND2']
+SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = [
     'haiderbuy-prod.herokuapp.com',
