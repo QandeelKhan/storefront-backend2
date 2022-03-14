@@ -1,12 +1,11 @@
 import os
 from .common import *
-
+from dotenv import load_dotenv
+load_dotenv()
 
 DEBUG = True
 
-# SECRET_KEY = os.environ['STOREFRONTBACKEND2']
-SECRET_KEY = '^=#d0fhc_bq)@^a11_fn!fc8&$73_rh6hmlpst%6ryz6x=^(s*'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DATABASES = {
     'default': {

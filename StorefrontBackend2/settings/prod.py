@@ -11,6 +11,7 @@ ALLOWED_HOSTS = [
     'https://haiderbuy-prod.herokuapp.com/',
     ]
 
+# dj-database-url: here the value of default object can be read by a connection string from our cloud rather then normally we set in dev mode. because here we use settings from clear_db on cloud(for mysql) rather then settings of db on our localmachine
 DATABASES = {
     'default': dj_database_url.config()
 }
