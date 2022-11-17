@@ -1,0 +1,8 @@
+# dev dependencies, only manually install, i.e "pipenv install --dev autopep8".
+autopep8
+pytest
+pytest-django
+pytest-watch
+model-bakery
+locust
+django-silk

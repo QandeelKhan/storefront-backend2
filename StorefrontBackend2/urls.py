@@ -18,11 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
+from rest_framework_swagger.views import get_swagger_view
 
 from StorefrontBackend2.settings.common import MEDIA_URL
 
 admin.site.site_header = 'Storefront Admin'
 admin.site.index_title = 'Admin'
+schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -32,11 +34,12 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('__debug__/', include(debug_toolbar.urls)),
-] 
+    path('swagger/', schema_view)
+
+]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
     urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
-    
- 

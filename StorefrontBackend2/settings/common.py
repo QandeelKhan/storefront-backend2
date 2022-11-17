@@ -26,15 +26,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'silk',
-    'playground',
     'debug_toolbar',
+    'rest_framework_swagger',
+    'playground',
     'store',
     'core',
     'tags',
     'likes',
 ]
 
-MIDDLEWARE = [ 
+MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -47,8 +48,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if settings.DEBUG:
-    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
+# if settings.DEBUG:
+#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 INTERNAL_IPS = [
     # ...
@@ -135,9 +136,9 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'core.User'
 
 DJOSER = {
-    'SERIALIZERS':{
-    'user_create': 'core.serializers.UserCreateSerializer',
-    'current_user': 'core.serializers.UserSerializer',
+    'SERIALIZERS': {
+        'user_create': 'core.serializers.UserCreateSerializer',
+        'current_user': 'core.serializers.UserSerializer',
     }
 }
 
@@ -145,6 +146,8 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
 }
+
+DEFAULT_FROM_EMAIL = 'from@haiderbuy.com'
 
 ADMINS = [
     ('Haider', 'admin@haiderbuy.com')
@@ -179,8 +182,8 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-        'format': '{asctime} ({levelname}) - {name} - {message}',
+            'format': '{asctime} ({levelname}) - {name} - {message}',
             'style': '{'
         }
-    }        
+    }
 }
