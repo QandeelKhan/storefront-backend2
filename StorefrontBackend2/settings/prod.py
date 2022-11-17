@@ -6,10 +6,7 @@ DEBUG = False
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-ALLOWED_HOSTS = [
-    'haiderbuy-prod.herokuapp.com',
-    'https://haiderbuy-prod.herokuapp.com/',
-    ]
+ALLOWED_HOSTS = ["*"]
 
 # dj-database-url: here the value of default object can be read by a connection string from our cloud rather then normally we set in dev mode. because here we use settings from clear_db on cloud(for mysql) rather then settings of db on our localmachine
 DATABASES = {
@@ -35,5 +32,3 @@ EMAIL_HOST = os.environ['MAILGUN_SMTP_SERVER']
 EMAIL_HOST_USER = os.environ['MAILGUN_SMTP_LOGIN']
 EMAIL_HOST_PASSWORD = os.environ['MAILGUN_SMTP_PASSWORD']
 EMAIL_PORT = os.environ['MAILGUN_SMTP_PORT']
-
-
