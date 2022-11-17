@@ -24,6 +24,7 @@ gunicorn = "*"
 dj-database-url = "*"
 django-silk = "*"
 python-dotenv = "*"
+django-rest-swagger = "*"
 
 [dev-packages]
 autopep8 = "*"
