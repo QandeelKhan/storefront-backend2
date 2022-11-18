@@ -7,6 +7,7 @@ DEBUG = False
 SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"] no need to add this line in development mode
 
 # dj-database-url: here the value of default object can be read by a connection string from our cloud rather then normally we set in dev mode. because here we use settings from clear_db on cloud(for mysql) rather then settings of db on our localmachine
 DATABASES = {

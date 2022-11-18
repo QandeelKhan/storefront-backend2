@@ -8,12 +8,30 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 SECRET_KEY = os.getenv('SECRET_KEY')
+# for mysql:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'storefront2',
+#         # 'HOST': 'mysql',
+#         'HOST': 'localhost',
+#         'USER': os.getenv('DB_USER'),
+#         'PASSWORD': os.getenv('DB_PASSWORD')
+#     }
+# }
+# for postgresql:
+# - sudo su
+# - su postgres -c psql postgres
+# - CREATE DATABASE dbname;
+# - CREATE USER djangouser WITH ENCRYPTED PASSWORD 'myPasswordHere';
+# - GRANT ALL PRIVILEGES ON DATABASE dbname TO djangouser;
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
+        # or
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'storefront2',
-        # 'HOST': 'mysql',
         'HOST': 'localhost',
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD')
