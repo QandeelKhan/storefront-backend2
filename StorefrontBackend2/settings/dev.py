@@ -11,6 +11,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # for mysql:
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # or
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'storefront2',
+        'HOST': 'localhost',
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD')
+    },
+    'mysql': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'storefront2',
         # 'HOST': 'mysql',
@@ -18,15 +27,6 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD')
     },
-    # 'pgsql': {
-    #     # 'ENGINE': 'django.db.backends.postgresql',
-    #     # or
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'storefront2',
-    #     'HOST': 'localhost',
-    #     'USER': os.getenv('DB_USER'),
-    #     'PASSWORD': os.getenv('DB_PASSWORD')
-    # }
 }
 
 
@@ -37,13 +37,24 @@ DATABASES = {
 # - CREATE USER djangouser WITH ENCRYPTED PASSWORD 'myPasswordHere';
 # - GRANT ALL PRIVILEGES ON DATABASE dbname TO djangouser;
 
+# moving mysql or sqlite3 to postgresql steps
+# 1 (Create all DB data to a json file): python manage.py dumpdata > dumpdata.json
+# set postgresql(any) in settings.py
+# 2 (Sync new DB) :python manage.py migrate --run-syncdb
+# 3 [exclude all content(contenttype) data]: python manage.py shell
+# 4 [inside shell, import contenttype data from django]: from django.contrib.contenttypes.models import ContentType
+# 5 [deleting all the content type data]: ContentType.objects.all().delete()
+# 6 [quit]: quit()
+# 7 [loading data from json file to the db we want]: python manage.py loaddata datadump.json
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
+#         # 'ENGINE': 'django.db.backends.postgresql',
 #         # or
-#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'storefront2',
 #         'HOST': 'localhost',
+#         # or default postgresql port 'PORT': 5432,
 #         'USER': os.getenv('DB_USER'),
 #         'PASSWORD': os.getenv('DB_PASSWORD')
 #     }
