@@ -49,9 +49,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        # 'ENGINE': 'django.db.backends.postgresql',
         # or
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv("PROD_DB_NAME"),
         'HOST': os.getenv("PROD_DB_HOST"),
         # or default postgresql port 'PORT': 5432,
