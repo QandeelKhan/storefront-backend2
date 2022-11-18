@@ -34,10 +34,9 @@ CACHES = {
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp4dev'
 EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = os.getenv('EPASSWORD')
+EMAIL_HOST_PASSWORD = os.getenv('PASSWORD')
 EMAIL_PORT = 2525
-DEFAULT_FROM_EMAIL = os.getenv('EEMAIL')
-
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL')
 
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: True
