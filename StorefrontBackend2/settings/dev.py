@@ -9,16 +9,27 @@ ALLOWED_HOSTS = ["*"]
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 # for mysql:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'storefront2',
-#         # 'HOST': 'mysql',
-#         'HOST': 'localhost',
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD')
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'storefront2',
+        # 'HOST': 'mysql',
+        'HOST': 'localhost',
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD')
+    },
+    # 'pgsql': {
+    #     # 'ENGINE': 'django.db.backends.postgresql',
+    #     # or
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'storefront2',
+    #     'HOST': 'localhost',
+    #     'USER': os.getenv('DB_USER'),
+    #     'PASSWORD': os.getenv('DB_PASSWORD')
+    # }
+}
+
+
 # for postgresql:
 # - sudo su
 # - su postgres -c psql postgres
@@ -26,17 +37,17 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # - CREATE USER djangouser WITH ENCRYPTED PASSWORD 'myPasswordHere';
 # - GRANT ALL PRIVILEGES ON DATABASE dbname TO djangouser;
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        # or
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'storefront2',
-        'HOST': 'localhost',
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD')
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         # or
+#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'storefront2',
+#         'HOST': 'localhost',
+#         'USER': os.getenv('DB_USER'),
+#         'PASSWORD': os.getenv('DB_PASSWORD')
+#     }
+# }
 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
 
