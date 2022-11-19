@@ -1,3 +1,4 @@
+import dj_database_url
 import os
 from .common import *
 from dotenv import load_dotenv
@@ -47,19 +48,25 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # 6 [quit]: quit()
 # 7 [loading data from json file to the db we want]: python manage.py loaddata datadump.json
 
+
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         # 'ENGINE': 'django.db.backends.postgresql',
-        # or
+        #         # or
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("PROD_DB_NAME"),
-        'HOST': os.getenv("PROD_DB_HOST"),
-        # or default postgresql port 'PORT': 5432,
+        'NAME': os.getenv('PROD_DB_NAME'),
         'USER': os.getenv('PROD_DB_USER'),
         'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
-        'PORT': os.getenv("PROD_DB_PORT")
+        'HOST': os.getenv("PROD_DB_HOST"),
+        'PORT': 25060
     }
 }
+# DATABASES = {
+#     # 'ENGINE': 'django.db.backends.postgresql',
+#     # or
+#     # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+# }
 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
 
