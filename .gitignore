@@ -4,3 +4,6 @@ general.log
 # inf.txt
 .env
 venv-StorefrontBackend2
+
+# db cert
+ca-certificate.crt
