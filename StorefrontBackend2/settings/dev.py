@@ -49,28 +49,27 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # 7 [loading data from json file to the db we want]: python manage.py loaddata datadump.json
 
 
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         # 'ENGINE': 'django.db.backends.postgresql',
-#         #         # or
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.getenv('PROD_DB_NAME'),
-#         'USER': os.getenv('PROD_DB_USER'),
-#         'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
-#         'HOST': os.getenv("PROD_DB_HOST"),
-#         'PORT': 25060
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.parse("postgresql://user-StorefrontBackend2:AVNS_UrInpPSqKbDIqefihLV@app-f50b6b84-f0cf-46fb-ae93-f8b96dde1e70-do-user-12706543-0.b.db.ondigitalocean.com:25060/StorefrontBackend2?sslmode=require")
+    'default': {
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
+        #         # or
+        #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('PROD_DB_NAME'),
+        'USER': os.getenv('PROD_DB_USER'),
+        'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
+        'HOST': "139.59.86.200",
+        'OPTIONS': {'sslmode': 'verify-full', 'sslrootcert': os.path.join(BASE_DIR, 'ca-certificate.crt')},
+        'PORT': "25060"
+    }
 }
+
 # DATABASES = {
-#     # 'ENGINE': 'django.db.backends.postgresql',
-#     # or
-#     # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'default': dj_database_url.config()
 # }
+# DATABASES['default'] = dj_database_url.config(
+#     default='postgresql://user-StorefrontBackend2:AVNS_UrInpPSqKbDIqefihLV@app-f50b6b84-f0cf-46fb-ae93-f8b96dde1e70-do-user-12706543-0.b.db.ondigitalocean.com:25060/StorefrontBackend2')
+
 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
 
