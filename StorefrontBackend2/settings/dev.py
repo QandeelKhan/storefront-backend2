@@ -46,19 +46,16 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # 4 [inside shell, import contenttype data from django]: from django.contrib.contenttypes.models import ContentType
 # 5 [deleting all the content type data]: ContentType.objects.all().delete()
 # 6 [quit]: quit()
-# 7 [loading data from json file to the db we want]: python manage.py loaddata datadump.json
+# 7 [loading data from json file to the db we want]: python manage.py loaddata dumpdata.json
 
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'ENGINE': 'django.db.backends.postgresql',
-        #         # or
-        #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('PROD_DB_NAME'),
         'USER': os.getenv('PROD_DB_USER'),
         'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
-        'HOST': "139.59.86.200",
+        'HOST': "app-f50b6b84-f0cf-46fb-ae93-f8b96dde1e70-do-user-12706543-0.b.db.ondigitalocean.com",
         'OPTIONS': {'sslmode': 'verify-full', 'sslrootcert': os.path.join(BASE_DIR, 'ca-certificate.crt')},
         'PORT': "25060"
     }
