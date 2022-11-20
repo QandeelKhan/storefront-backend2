@@ -49,8 +49,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if settings.DEBUG:
-    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
+# if settings.DEBUG:
+#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 INTERNAL_IPS = [
     # ...
