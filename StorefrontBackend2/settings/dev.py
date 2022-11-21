@@ -1,3 +1,4 @@
+from decouple import config
 import dj_database_url
 import os
 from .common import *
