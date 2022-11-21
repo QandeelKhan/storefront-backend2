@@ -59,13 +59,10 @@ DATABASES = {
         'PORT': "25060"
     }
 }
-
+# for connection string
 # DATABASES = {
 #     'default': dj_database_url.config()
 # }
-# DATABASES['default'] = dj_database_url.config(
-#     default='postgresql://user-StorefrontBackend2:AVNS_UrInpPSqKbDIqefihLV@app-f50b6b84-f0cf-46fb-ae93-f8b96dde1e70-do-user-12706543-0.b.db.ondigitalocean.com:25060/StorefrontBackend2')
-
 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
 
@@ -80,12 +77,8 @@ CACHES = {
     }
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp4dev'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = os.getenv('PASSWORD')
-EMAIL_PORT = 2525
-DEFAULT_FROM_EMAIL = os.getenv('EMAIL')
+# email
+from ..email.email_conf import *  # noqa
 
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: True
