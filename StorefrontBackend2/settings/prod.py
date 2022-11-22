@@ -1,22 +1,31 @@
 import os
-import dj_database_url
+# import dj_database_url
+# from decouple import config
+from dotenv import load_dotenv
 from .common import *
+load_dotenv()
 
 DEBUG = False
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.getenv['SECRET_KEY']
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["*"] no need to add this line in development mode
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
-# dj-database-url: here the value of default object can be read by a connection string from our cloud rather then normally we set in dev mode. because here we use settings from clear_db on cloud(for mysql) rather then settings of db on our localmachine
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('PROD_DB_NAME'),
+        'USER': os.getenv('PROD_DB_USER'),
+        'PASSWORD': os.getenv('PROD_DB_PASSWORD'),
+        'HOST': "app-f50b6b84-f0cf-46fb-ae93-f8b96dde1e70-do-user-12706543-0.b.db.ondigitalocean.com",
+        'PORT': "25060"
+    }
 }
 
 REDIS_URL = os.environ['REDIS_URL']
 
 CELERY_BROKER_URL = REDIS_URL
+
 
 CACHES = {
     'default': {
@@ -29,7 +38,11 @@ CACHES = {
     }
 }
 
-EMAIL_HOST = os.environ['MAILGUN_SMTP_SERVER']
-EMAIL_HOST_USER = os.environ['MAILGUN_SMTP_LOGIN']
-EMAIL_HOST_PASSWORD = os.environ['MAILGUN_SMTP_PASSWORD']
-EMAIL_PORT = os.environ['MAILGUN_SMTP_PORT']
+# mailgun alternative email service for digitalocean
+# EMAIL_HOST = os.environ['MAILGUN_SMTP_SERVER']
+# EMAIL_HOST_USER = os.environ['MAILGUN_SMTP_LOGIN']
+# EMAIL_HOST_PASSWORD = os.environ['MAILGUN_SMTP_PASSWORD']
+# EMAIL_PORT = os.environ['MAILGUN_SMTP_PORT']
+
+# email
+from ..email.email_conf import *  # noqa
